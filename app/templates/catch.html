@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ message }}</h1>
+    <form method="POST">
+        <label for="pokemon">Select a Pokemon:</label>
+        <select name="pokemon" id="pokemon">
+            {% for name in pokemon_names %}
+                <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Catch!</button>
+    </form>
+
+    {% endblock %}

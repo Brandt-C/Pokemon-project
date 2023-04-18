@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{f}}</h1>
+<div class="container">
+    <div class="row" >
+        {% for p in pokemon %}
+        <div class="col-6"></div>
+        <p>Name: {{ p.name }}</p>
+        <h6>Ability: {{ p["ability"] }}</h6>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
