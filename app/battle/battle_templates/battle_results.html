@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Battle Results</h1>
+  <p>{{ user1_username }}'s {{ user1_pokemon['name'] }} battled {{ user2_username }}'s {{ user2_pokemon['name'] }}!</p>
+  {% if winner == user1_username %}
+    <p>{{ user1_username }} is the winner!</p>
+  {% else %}
+    <p>{{ user2_username }} is the winner!</p>
+  {% endif %}
+{% endblock %}

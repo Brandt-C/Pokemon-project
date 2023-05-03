@@ -5,6 +5,8 @@ def get_pokemon(pokemon_name):
     response = requests.get(url)
     if response.ok:
         data = response.json()
+        if 'id' not in data:
+            return None
         product = {
         'pokemon_id' : data["id"],
         'pokemon_name' : data["name"],

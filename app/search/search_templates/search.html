@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="card" style="width: 18rem;">
+    <img src="{{ pokemon.img_url }}" class="card-img-top" alt="{{ pokemon_name }}">
+    <div class="card-body">
+      <form method="POST" action="{{ url_for('search.api_search_pokemon') }}">
+        <input type="text" name="pokemon_name" class="form-control" placeholder="Enter Pokemon name">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <h5 class="card-title">{{ pokemon.name }}</h5>
+      <p class="card-text">{{ pokemon.stat }}</p>
+      <p class="card-text">{{ pokemon.description }}</p>
+      <p class="card-text">{{ pokemon.category }}</p>
+      <a href="{{ url_for('pokemon.addToPokemon', pokemon_id=pokemon.id) }}" class="btn btn-primary">Add to your Team!</a>
+    </div>
+  </div>
+
+  {% if pokemon %}
+  <h1>{{ pokemon['name'] }}</h1>
+  <img src="{{ pokemon['sprites']['front_default'] }}" alt="{{ pokemon['name'] }} sprite">
+  <p><strong>Type:</strong> {{ pokemon['types'][0]['type']['name'] }}</p>
+  <p><strong>Height:</strong> {{ pokemon['height']/10 }} m</p>
+  <p><strong>Weight:</strong> {{ pokemon['weight']/10 }} kg</p>
+{% else %}
+  <h1>No Pokemon found!</h1>
+{% endif %}
+
+{% endblock %}

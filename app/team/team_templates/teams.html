@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Team Builder</h1>
+  <form method="POST">
+    <h2>Pokemon</h2>
+    {% for p in pokemon %}
+      <label>
+        <input type="checkbox" name="team" value="{{ p.name }}"
+        {% if p.name in team %} checked{% endif %}>
+        {{ p.name }}
+      </label>
+      <br>
+    {% endfor %}
+    <input type="submit" value="Save Team">
+  </form>
+  <h2>Current Team</h2>
+  {% if team %}
+    <ul>
+      {% for p in team %}
+        <li>{{ p }} <form method="POST" action="{{ url_for('remove_from_team') }}">
+            <input type="hidden" name="pokemon_name" value="{{ p }}">
+            <input type="submit" value="Remove">
+          </form></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No Pokemon in team!</p>
+  {% endif %}
+{% endblock %}
+

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Pokemon Battle</h1>
+  <form method="POST">
+    <label>User 1:</label>
+    <input type="text" name="user1_username"><br>
+    <label>User 2:</label>
+    <input type="text" name="user2_username"><br>
+    <input type="submit" value="Battle!">
+  </form>
+{% endblock %}
