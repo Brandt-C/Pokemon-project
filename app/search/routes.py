@@ -3,29 +3,18 @@ from app.forms import PokemonLookUpForm
 from ..models import Pokemon, db
 import requests
 from ..api import get_pokemon
-
+from ..services import search_pokemon #moved this to make the import cleaner and a little more broad
 
 search = Blueprint('search', __name__, url_prefix='/search')
 
 
-def search_pokemon(name):
-    url = f"https://pokeapi.co/api/v2/pokemon/{name.lower()}"
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        pokemon = response.json()
-        return pokemon
-    else:
-        return None
-    
+#took out some misplaced noise in here. . . 
 
 
-from flask import Flask, render_template, request
 
-app = Flask(__name__)
 
-@app.route('/search')
-def search():
+@search.route('/')  #app.route is for the general routes.py file in the app folder so this address is now /search
+def search_poke():      #Changed!
     name = request.args.get('name')
     pokemon = search_pokemon(name)
     return render_template('search.html', pokemon=pokemon)

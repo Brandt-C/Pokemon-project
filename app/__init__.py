@@ -35,7 +35,9 @@ login.init_app(app)
 login.login_view='auth.loginPage'
 
 app.register_blueprint(auth)
-app.register_blueprint(team)
+app.register_blueprint(team) #team, search, and battle are all currently named functions which is preventing their registration as blueprints
+# Careful with naming conventions- best practice is to be specific even if it means you need to type more!
+# I'm going to go to the routes and re-name to fix i.e.: the route was def team(): and now is get_team():
 app.register_blueprint(search)
 app.register_blueprint(catch)
 app.register_blueprint(battle)

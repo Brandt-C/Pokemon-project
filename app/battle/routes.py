@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template
-from models import User
+from ..models import User #fixed routing here
 from flask_login import login_required
-from search import search_pokemon
+from ..services import search_pokemon #moved this to make the import cleaner and a little more broad
 
 
 battle = Blueprint('battle', __name__, template_folder='battle_templates')
@@ -11,7 +11,7 @@ import random
 
 @battle.route('/battle', methods=['GET', 'POST'])
 @login_required
-def battle():
+def poke_battle(): #Changed!
     if request.method == 'POST':
         # Get the usernames of the two users who are battling
         user1_username = request.form['user1_username']

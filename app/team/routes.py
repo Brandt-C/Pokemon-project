@@ -7,7 +7,7 @@ team = Blueprint('team', __name__, template_folder='team_templates')
 
 @team.route('/team', methods=['GET', 'POST'])
 @login_required
-def team():
+def get_team():     #Changed!
     # Get the current user's Pokemon
     user_pokemon = User.query.filter_by(username=current_user.username).first().pokemon
 
