@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from ..models import User, db
-from search import search_pokemon
+from ..services import search_pokemon #moved this to make the import cleaner and a little more broad
 
 catch = Blueprint('catch', __name__, template_folder='catch_templates')
 
