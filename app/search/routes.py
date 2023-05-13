@@ -5,7 +5,7 @@ import requests
 from ..api import get_pokemon
 from ..services import search_pokemon #moved this to make the import cleaner and a little more broad
 
-search = Blueprint('search', __name__, url_prefix='/search')
+search = Blueprint('search', __name__, template_folder='search_templates')
 
 
 #took out some misplaced noise in here. . . 
@@ -21,7 +21,7 @@ def search_poke():      #Changed!
 
 
 
-@search.route('/catch', methods=['GET', 'POST'])
+@search.route('/search', methods=['GET', 'POST'])
 def api_search_pokemon():
     form = PokemonLookUpForm()
     if form.validate_on_submit():

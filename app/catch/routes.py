@@ -5,13 +5,6 @@ from ..services import search_pokemon #moved this to make the import cleaner and
 catch = Blueprint('catch', __name__, template_folder='catch_templates')
 
 
-@catch.route('/search')
-def search():
-    name = request.args.get('name')
-    pokemon = search_pokemon(name)
-    print(pokemon)
-    return render_template('catch.html', pokemon=pokemon)
-
 @catch.route('/catch', methods=['POST'])
 def catch_pokemon(username, pokemon_name):
     pokemon_name = request.form.get('pokemon_name')

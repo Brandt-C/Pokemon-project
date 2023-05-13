@@ -14,7 +14,7 @@
       <p class="card-text">{{ pokemon.stat }}</p>
       <p class="card-text">{{ pokemon.description }}</p>
       <p class="card-text">{{ pokemon.category }}</p>
-      <a href="{{ url_for('pokemon.addToPokemon', pokemon_id=pokemon.id) }}" class="btn btn-primary">Add to your Team!</a>
+      <a href="{{ url_for('catch.catch_pokemon', pokemon_id=pokemon.id) }}" class="btn btn-primary">Add to your Team!</a>
     </div>
   </div>
 

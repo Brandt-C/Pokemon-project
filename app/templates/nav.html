@@ -19,10 +19,9 @@
                     <a class="nav-link disabled">Find Battle</a>
                 </li>
             </ul>
-            <form action="{{ url_for('search.api_search_pokemon') }}" method="post">
-                <input type="text" name="pokemon_name" placeholder="Enter a Pokemon name">
-                <button type="submit">Search</button>
-              </form>                          
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('search.search_poke')}}">Search</a>
+            </li>                          
         </div>
         <a href="{{ url_for('auth.registerPage') }}">
             <button type="button" class="nav-item">Register</button>

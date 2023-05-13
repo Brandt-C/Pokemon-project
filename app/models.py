@@ -5,10 +5,16 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+cart = db.Table(
+    'my_pokemon',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
+    db.Column('pokemon_id', db.Integer, db.ForeignKey('pokemon.id'), nullable=False),
+)
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    password = db.Column(db.String(20), nullable=False)
+    username = db.Column(db.String, unique=True, nullable=False)
+    password = db.Column(db.String, nullable=False)
     pokemon = db.relationship('Pokemon', backref='user', lazy=True)
 
     def __init__(self, username, password):
