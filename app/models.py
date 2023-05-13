@@ -11,9 +11,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(20), nullable=False)
     pokemon = db.relationship('Pokemon', backref='user', lazy=True)
 
-    def __init__(self, username, email, password):
+    def __init__(self, username, password):
         self.username = username
-        self.email = email
         self.password = generate_password_hash(password)
 
     def saveUser(self):

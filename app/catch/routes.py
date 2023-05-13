@@ -9,7 +9,8 @@ catch = Blueprint('catch', __name__, template_folder='catch_templates')
 def search():
     name = request.args.get('name')
     pokemon = search_pokemon(name)
-    return render_template('search.html', pokemon=pokemon)
+    print(pokemon)
+    return render_template('catch.html', pokemon=pokemon)
 
 @catch.route('/catch', methods=['POST'])
 def catch_pokemon(username, pokemon_name):

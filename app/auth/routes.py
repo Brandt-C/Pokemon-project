@@ -19,11 +19,10 @@ def registerPage():
     if request.method == 'POST':
         if form.validate():
             username = form.username.data
-            email = form.email.data
             password = form.password.data
-            print(username, email, password)
+            print(username, password)
 
-            user = User(username, email, password)
+            user = User(username, password)
             user.saveUser()
 
             flash(f'Welcome to Battle Pokemon {user,username}', 'success')
